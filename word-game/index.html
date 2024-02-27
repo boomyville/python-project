@@ -8,24 +8,26 @@
   </head>
   
   <body> 
-    <div class="container" style="text-align: center;">
-        <a href="https://gitlab.com/eduardobonet/nblite" target="_blank">Minimalistic notebooks in the browser</a>
-    </div >
+
 
     <div id="nb-selector" class="container">
         <form action="index.html" method="GET">
             <label for="fname">URL to Notebook:</label>
             <input type="text" id="url" name="url" required
-                value="./project/word-game.ipynb"
+                value=""
             >
             <input type="submit" value="Submit" style="display: inline;">
         </form>
 
         <h3>Projects</h3>
 
-        <p><a href="?url=./[project]/word-game.ipynb">Wordle Clone</a></p>
+        <p><a href="https://raw.githubusercontent.com/boomyville/python-project/main/word-game/project/wordgame.ipynb">Wordle Clone</a></p>
         
     </div>
+
+    <div class="container" style="text-align: center;">
+      <a href="https://gitlab.com/eduardobonet/nblite" target="_blank">Minimalistic notebooks in the browser</a>
+  </div >
 
     <div id="nb-content" class="container">
 
