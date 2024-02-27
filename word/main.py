@@ -21,6 +21,9 @@ goodletters = set()
 okayletters = set()
 badletters = set()
 
+#Intro text
+print("Guess the 5 letter word!\nGood letters in square brackets [ X ] are in the right spot\nOkay letters in rounded brackets ( X ) are in the wrong spot")
+
 #We use a while loop to keep the game active until game over state or player guesses the word
 while lives > 0:
     guess = input("Guess a 5 letter word: ").upper() #Make guess capitilised since all answers are capitalised
@@ -34,7 +37,7 @@ while lives > 0:
     elif guess.upper() not in wordlist: #No invalid words. Also no rude words!
         print("This is not a word!")
     elif guess == answer: #Correct guess
-        print(f'You win! The answer is {guess}')
+        print(f'You win! The answer is {guess}. You guessed it in {7-lives} guesses!')
         break;
     else:
         #Process guess
