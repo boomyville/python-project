@@ -10,8 +10,7 @@ def create_app(test_config=None):
     if test_config is None:
         app.config.from_pyfile('config.py', silent=True)  # Silent means nothing will be mentioned about this command 10     else:
         app.config.from_mapping(test_config)
-
-
-from models import db
-db.init_app(app)
-return app
+    
+    from models import db
+    db.init_app(app)
+    return app
