@@ -1,20 +1,25 @@
-  2 from flask_sqlalchemy import SQLAlchemy
-  3
-  4
-  5 db = SQLAlchemy()
-  6
-  7 class Ticket(db.Model):
-  8     id = db.Column(db.Integer, primary_key=True)
-  9     name = db.Column(db.String(100), nullable=False)
- 10     status = db.Column(db.Integer, nullable=False)
- 11     url = db.Column(db.String(100), nullable=True)
- 12
- 13     statuses_dict = {
- 14         0: 'Reported',
- 15         1: 'In Progress',
- 16         2: 'In Review',
- 17         3: 'Resolved'
- 18     }
- 19
- 20 def status_string(self):
- 21     return self.statuses_dict[self.status]
+from flask_sqlalchemy import SQLAlchemy
+
+# Connects to a postgres database to store data
+# Data is stored in JSON 
+
+db = SQLAlchemy()
+
+class Ticket(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    status = db.Column(db.Integer, nullable=False)
+    url = db.Column(db.String(100), nullable=True)
+
+
+statuses_dict = {
+    0: 'Reported',
+    1: 'In Progress',
+    2: 'In Review',
+    3: 'Resolved',
+    }
+
+
+def status_string(self):
+    return self.statuses_dict[self.status]
