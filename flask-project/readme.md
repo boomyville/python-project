@@ -9,7 +9,7 @@ Move into 'project' and create a virtual python environment. We are going with p
 
 Make sure to move into the directory 'project' to store all files
 
-We can use: **pipenv --python=$(which python3.7) install flask **
+We can use: **pipenv --python=$(which python3.7) install flask**
 
 To activate a virtual environment we can run: **pipenv shell**
 
