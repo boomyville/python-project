@@ -1,4 +1,4 @@
-# Flask app that links a python project to a (postgres/mariadb) database
+# Flask app that links a python project to a mariaDB database
 
 This app creates an API which we can use to connect a separate python app to a database
 
@@ -9,11 +9,9 @@ Move into 'project' and create a virtual python environment. We are going with p
 
 Make sure to move into the directory 'project' to store all files
 
-We can use: **pipenv --python=$(which python3.7) install flask**
+We can use: **pipenv --python=$(which python3.7) install flask Flask-SQLAlchemy**
 
 To activate a virtual environment we can run: **pipenv shell**
-
-Also make sure postgres is installed too (sudo apt-get install postgresql)
 
 ## Configure __init__.py
 Mainly stolen from official [documentation](https://flask.palletsprojects.com/en/3.0.x/tutorial/factory/)
