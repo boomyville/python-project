@@ -1,17 +1,32 @@
 import os
 
-# Runs a basic python script to initialise the flask app
-
-from flask import Flask
+from flask import Flask, redirect, render_template, url_for
 
 def create_app(test_config=None):
     app = Flask(__name__)
-    app.config.from_mapping(SECRET_KEY=os.environ.get('SECRET_KEY', default='dev'))
+    app.config.from_mapping(
+        SECRET_KEY=(os.getenv('SECRET_KEY') or 'dev'),
+    )
+
     if test_config is None:
-        app.config.from_pyfile('config.py', silent=True)  # Silent means nothing will be mentioned about this command 10     
+        # Load configuration from config.py
+        app.config.from_pyfile('config.py', silent=True)
     else:
         app.config.from_mapping(test_config)
-    
-    from .models import db # We have a models.py file and want to import the db info
+
+    from .models import db
     db.init_app(app)
+
+    @app.route('/')
+    def index():
+        return redirect(url_for('tickets'))
+
+    @app.route('/tickets')
+    def tickets():
+        return render_template('tickets_index.html')
+
+    @app.route('/tickets/<int:ticket_id>')
+    def tickets_show(ticket_id):
+        return render_template('tickets_show.html')
+
     return app
