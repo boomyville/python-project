@@ -12,6 +12,6 @@ def create_app(test_config=None):
     else:
         app.config.from_mapping(test_config)
     
-    from models import db
+    from .models import db # We have a models.py file and want to import the db info
     db.init_app(app)
     return app
