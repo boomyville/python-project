@@ -2,7 +2,7 @@ import os
 
 # this config file has all our information to connect to the postgres database
 
-cloud_host = '10.0.0.98' # Edit this to the local database IP
+cloud_host = '10.0.1.173' # Edit this to the local database IP
 
 db_host = os.environ.get('DB_HOST', default=f'{cloud_host})
 db_name = os.environ.get('DB_NAME', default='dashboard')
