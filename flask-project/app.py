@@ -32,7 +32,7 @@ class Score(db.Model):
     ip = db.Column(db.Integer)
     time = db.Column(db.DateTime(timezone=True),
                            server_default=func.now())
-    score = db.Column(db.Integer)
+    msg = db.Column(db.String(100), nullable=False)
 
     def __repr__(self):
-        return f'<Player {self.name}>'
+        return f'<Guest: {self.name}>'
