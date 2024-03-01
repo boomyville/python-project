@@ -13,6 +13,16 @@ We can use: **pipenv --python=$(which python3.7) install flask Flask-SQLAlchemy*
 
 To activate a virtual environment we can run: **pipenv shell**
 
+Also make sure mariaDB is installed
+```
+sudo apt-get install -y libmariadb-dev
+```
+Then in our virtual environment:
+
+```
+pip install mariadb
+```
+
 ## Configure __init__.py
 Mainly stolen from official [documentation](https://flask.palletsprojects.com/en/3.0.x/tutorial/factory/)
 
