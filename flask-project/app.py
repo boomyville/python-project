@@ -19,8 +19,9 @@ user = 'boomy'
 password = 'secret'
 host = '192.168.1.10'
 port = '3306'
+database = 'boomy_online'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://{user}:{password}@{host}:{port}'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mariadb+mariadbconnector://{user}:{password}@{host}:{port}/{database}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
