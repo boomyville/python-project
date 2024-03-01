@@ -16,11 +16,11 @@ app = Flask(__name__)
 # mysql://username:password@host:port
 # https://docs.sqlalchemy.org/en/14/core/engines.html
 user = 'boomy'
-pass = 'secret'
+password = 'secret'
 host = '192.168.1.10'
 port = '3306'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://{user}:{pass}@{host}:{port}'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://{user}:{password}@{host}:{port}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
