@@ -49,4 +49,6 @@ The models.py file contains the structure of our database
 
 We use SQLAlchemy to map a python dictionary to SQL objects
 
-
+```
+pipenv install psycopg2 Flask-SQLAlchemy
+```
