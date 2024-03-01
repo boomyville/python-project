@@ -13,6 +13,8 @@ We can use: **pipenv --python=$(which python3.7) install flask**
 
 To activate a virtual environment we can run: **pipenv shell**
 
+Also make sure postgres is installed too (sudo apt-get install postgresql)
+
 ## Configure __init__.py
 Mainly stolen from official [documentation](https://flask.palletsprojects.com/en/3.0.x/tutorial/factory/)
 
