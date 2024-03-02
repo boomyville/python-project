@@ -23,42 +23,31 @@ Then in our virtual environment:
 pip install mariadb
 ```
 
-## Configure __init__.py
+## Configure app.py
 Mainly stolen from official [documentation](https://flask.palletsprojects.com/en/3.0.x/tutorial/factory/)
 
-Set some environmental variables in shell: 
-
+Configure the login details
 ```
-export FLASK_ENV=development
-export FLASK_APP='.'
+user = 'boomy'
+password = 'secret'
+host = '192.168.1.10'
+port = '3306'
+database = 'boomy_online'
+```
+Configure [SQLALCHEMY_DATABASE_URI](https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/) if not using MariaDB
+Run the app using the following command:
+```
 # flask run --host=0.0.0.0 --port=3000
-# flask --app flaskr run --debug
 ```
 
-## Database connection (postgres)
+## Configuring the database
 
-We use psycopg2 as a database adapter: pipenv install psycopg2 Flask-SQLAlchemy
+Create a database in MariaDB and give it a name
 
-config.py has some parameters that need tweaking. This assumes postgres is already installed and running
 
-```
-db_host = os.environ.get('DB_HOST', default='< DB_PRIVATE_IP >')
-db_name = os.environ.get('DB_NAME', default='dashboard')
-db_password = os.environ.get('DB_PASSWORD', default='secure_password')
-db_port = os.environ.get('DB_PORT', default='5432')
-db_user = os.environ.get('DB_USERNAME', default='dashboard')
-```
 
-The method of us applying these config requires us altering the environmental variables in our virtual python environment
+## Configuring the HTML
 
-You could replace the defaults with the actual values in this script but then anyone has access to them...
+We wrap python variables with {% %}
 
-## Creating out database
 
-The models.py file contains the structure of our database
-
-We use SQLAlchemy to map a python dictionary to SQL objects
-
-```
-pipenv install psycopg2 Flask-SQLAlchemy
-```
