@@ -1,21 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1 class="title">{% block title %} Students {% endblock %}</h1>
+    <h1 class="title">{% block title %} Guests {% endblock %}</h1>
     <div class="content">
-        {% for student in students %}
+        {% for guests in guests %}
             <div class="student">
-                <p><b>#{{ student.id }}</b></p>
+                <p><b>#{{ guest.id }}</b></p>
                 <b>
-                    <p class="name">{{ student.firstname }} {{ student.lastname }}</p>
+                    <p class="name">{{ guest.name }}</p>
                 </b>
-                <p>{{ student.email }}</p>
-                <p>{{ student.age }} years old.</p>
-                <p>Joined: {{ student.created_at }}</p>
-                <div class="bio">
-                    <h4>Bio</h4>
-                    <p>{{ student.bio }}</p>
-                </div>
+                <p>{{ guest }}</p>
+                <p>Time: {{ guest.time }}</p>
             </div>
         {% endfor %}
     </div>
