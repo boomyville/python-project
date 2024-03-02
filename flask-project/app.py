@@ -1,8 +1,15 @@
-import os
+import os, socket
 from flask import Flask, render_template, request, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
 
 from sqlalchemy.sql import func
+
+# A summary of the packages we use
+# OS is only used to determine path of this script
+# socket is used to get ipaddress
+# flask is used to connect HTML / database / python
+# flask also includes a whole bunch of functions such as render_template, request, url_redirect
+# sqlalchemy is used to connect to a database
 
 # __file__ is a special attribute
 # Refers to absolute pathfile of current script
@@ -45,7 +52,23 @@ class Book(db.Model):
 # route '/' will run when the user goes to url:port/
 # This is effectively the 'main page'
 # In this scenario we do a query to find all instances in the database and present it to the user
+
 @app.route('/')
 def index():
     guests = Book.query.all()
     return render_template('index.html', guests=guests)
+
+# We also create a function that will create a new entry in our guestbook
+
+@app.route('/create/', methods=('GET', 'POST'))
+def create():
+    if request.method == 'POST':
+        name = request.form['name']
+        msg = int(request.form['msg'])
+        guest = Book(name=name, msg=msg, ip=sockets.gethostbyname()) #Grab IP address using sockets
+        db.session.add(guest)
+        db.session.commit()
+
+        return redirect(url_for('index'))
+
+    return render_template('create.html')
