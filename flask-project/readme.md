@@ -61,4 +61,16 @@ For this example we are creating a book dictionary with the following parameters
 
 We wrap python variables with {% %}
 
+The templates/index.html is our homepage
+
+It loops through all entries in the database and spits out a list of them which are then shown in <div> blocks
+
+Each block will show a name and a hyperlink to the actual comment
+
+The templates/page.html is rendered when host/id is accessed (id being the database id of the guestbook page)
+
+So for example flask.app:3000/5 will load the 5th database entry (well database.id == 5)
+
+In this page we also render the message that the user left
+
 
