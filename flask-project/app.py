@@ -23,10 +23,10 @@ app = Flask(__name__)
 # mysql://username:password@host:port
 # https://docs.sqlalchemy.org/en/14/core/engines.html
 user = 'boomy'
-password = 'secret'
+password = 'connex'
 host = '192.168.1.10'
 port = '3306'
-database = 'boomy_online'
+database = 'guestbook'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mariadb+mariadbconnector://{user}:{password}@{host}:{port}/{database}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -64,8 +64,8 @@ def index():
 def create():
     if request.method == 'POST':
         name = request.form['name']
-        msg = int(request.form['msg'])
-        guest = Book(name=name, msg=msg, ip=sockets.gethostbyname()) #Grab IP address using sockets
+        msg = str(request.form['msg'])
+        guest = Book(name=name, msg=msg, ip=socket.gethostbyname()) #Grab IP address using sockets
         db.session.add(guest)
         db.session.commit()
 
