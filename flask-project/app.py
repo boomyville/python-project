@@ -26,6 +26,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+# We create a book object 
+# It will hold values we will store in the database
+
 class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
@@ -34,5 +37,15 @@ class Book(db.Model):
                            server_default=func.now())
     msg = db.Column(db.String(100), nullable=False)
 
+    # This __repr__ (representation) will be returned when the above class is called
     def __repr__(self):
         return f'<Guest: {self.name}>'
+
+# Flask uses @app.function to perform its actions
+# route '/' will run when the user goes to url:port/
+# This is effectively the 'main page'
+# In this scenario we do a query to find all instances in the database and present it to the user
+@app.route('/')
+def index():
+    guests = Book.query.all()
+    return render_template('index.html', guests=guests)
