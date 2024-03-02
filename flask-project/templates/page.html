@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <span class="title">
+        <h1>{% block title %} {{ guest.name }} {% endblock %}</h1>
+    </span>
+    <div class="content">
+            <div class="page">
+                <p><b>#{{ guest.id }}</b></p>
+                <b>
+                    <p class="name">{{ guest.name}}</p>
+                </b>
+                <p>{{ guest.msg }}</p>
+                <p>Time: {{ guest.time }}</p>
+            </div>
+    </div>
+{% endblock %}
