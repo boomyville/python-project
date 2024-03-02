@@ -10,6 +10,11 @@ from sqlalchemy.sql import func
 # flask is used to connect HTML / database / python
 # flask also includes a whole bunch of functions such as render_template, request, url_redirect
 # sqlalchemy is used to connect to a database
+# Inspired by this tutorial: https://www.digitalocean.com/community/tutorials/how-to-use-flask-sqlalchemy-to-interact-with-databases-in-a-flask-application
+
+# To do list:
+# Implement @app.route('/<int:pageId>/')
+# Show a single message
 
 # __file__ is a special attribute
 # Refers to absolute pathfile of current script
@@ -23,8 +28,8 @@ app = Flask(__name__)
 # mysql://username:password@host:port
 # https://docs.sqlalchemy.org/en/14/core/engines.html
 user = 'boomy'
-password = 'connex'
-host = '192.168.1.10'
+password = 'secret'
+host = '127.0.0.1'
 port = '3306'
 database = 'guestbook'
 
@@ -65,7 +70,8 @@ def create():
     if request.method == 'POST':
         name = request.form['name']
         msg = str(request.form['msg'])
-        guest = Book(name=name, msg=msg, ip=socket.gethostbyname()) #Grab IP address using sockets
+	    # Grab IP address using sockets and time using SQLAlchemy func
+        guest = Book(name=name, msg=msg, ip=socket.gethostbyname(socket.gethostname()), time=func.now()) 
         db.session.add(guest)
         db.session.commit()
 
