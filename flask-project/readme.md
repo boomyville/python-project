@@ -26,7 +26,8 @@ pip install mariadb
 ## Configure app.py
 Mainly stolen from official [documentation](https://flask.palletsprojects.com/en/3.0.x/tutorial/factory/)
 
-Configure the login details
+Configure database connection; edit [SQLALCHEMY_DATABASE_URI](https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/) if not using MariaDB
+
 ```
 user = 'boomy'
 password = 'secret'
@@ -34,7 +35,7 @@ host = '192.168.1.10'
 port = '3306'
 database = 'boomy_online'
 ```
-Configure [SQLALCHEMY_DATABASE_URI](https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/) if not using MariaDB
+
 Run the app using the following command:
 ```
 # flask run --host=0.0.0.0 --port=3000
@@ -44,7 +45,17 @@ Run the app using the following command:
 
 Create a database in MariaDB and give it a name
 
+For this example we are creating a book dictionary with the following parameters:
 
+```
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    ip = db.Column(db.String(100), nullable=False)
+    time = db.Column(db.DateTime(timezone=True),
+                           server_default=func.now())
+    msg = db.Column(db.String(100), nullable=False)
+
+```
 
 ## Configuring the HTML
 
