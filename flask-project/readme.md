@@ -35,6 +35,7 @@ host = '192.168.1.10'
 port = '3306'
 database = 'boomy_online'
 ```
+Make sure there is a database called **guestbook** created and a table called **book**
 
 Run the app using the following command:
 ```
