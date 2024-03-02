@@ -3,14 +3,13 @@
 {% block content %}
     <h1 class="title">{% block title %} Guests {% endblock %}</h1>
     <div class="content">
-        {% for guests in guests %}
-            <div class="student">
-                <p><b>#{{ guest.id }}</b></p>
+        {% for guest in guests %}
+            <div class="page">
                 <b>
                     <p class="name">{{ guest.name }}</p>
                 </b>
-                <p>{{ guest }}</p>
-                <p>Time: {{ guest.time }}</p>
+                <p>{{guest.msg}}</p>
+                <p>{{ guest.time }}</p>
             </div>
         {% endfor %}
     </div>
