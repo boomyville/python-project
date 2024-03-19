@@ -31,9 +31,9 @@ Configure database connection; edit [SQLALCHEMY_DATABASE_URI](https://flask-sqla
 ```
 user = 'boomy'
 password = 'secret'
-host = '192.168.1.10'
+host = 'XXX.XXX.XXX.XXX'
 port = '3306'
-database = 'boomy_online'
+database = 'database_name'
 ```
 Make sure there is a database called **guestbook** created and a table called **book**
 
